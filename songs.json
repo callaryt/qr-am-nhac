@@ -1,15 +1,19 @@
-
 {
   "songs": [
     {
       "title": "Đi nữa đời này",
-      "artist": "Tác giả",
+      "artist": "Author",
       "file": "Đi nữa đời này .mp3"
     },
     {
       "title": "Cơm áo gạo tiền",
-      "artist": "Tác giả",
+      "artist": "Author",
       "file": "Cơm áo gạo tiền .mp3"
+    },
+    {
+      "title": "Lầu cao một bóng",
+      "artist": "Author",
+      "file": "Lầu cao một bóng .mp3"
     }
   ]
 }
