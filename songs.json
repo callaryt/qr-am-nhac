@@ -1,4 +1,3 @@
-
 [
 {
 "title": "Lầu cao một bóng",
@@ -9,24 +8,20 @@
 "title": "Mỹ vị cuộc đời",
 "artist": "Author",
 "file": "Mỹ vị cuộc đời.mp3"
-}  ,
-  {
-    "title": "Nghèo thì ai thương",
-    "artist": "Author",
-    "file": "Nghèo thì ai thương .mp3"
-  }
-]
+},
 {
-  "songs": [
-    {
-      "title": "Đi nữa đời này",
-      "artist": "Author",
-      "file": "Đi nữa đời này .mp3"
-    },
-    {
-      "title": "Rất lâu rồi mới khóc",
-      "artist": "Author",
-      "file": "Rất lâu rồi mới khóc .mp3"
-    }
-  ]
+"title": "Nghèo thì ai thương",
+"artist": "Author",
+"file": "Nghèo thì ai thương .mp3"
+},
+{
+"title": "Đi nữa đời này",
+"artist": "Author",
+"file": "Đi nữa đời này .mp3"
+},
+{
+"title": "Rất lâu rồi mới khóc",
+"artist": "Author",
+"file": "Rất lâu rồi mới khóc .mp3"
 }
+]
