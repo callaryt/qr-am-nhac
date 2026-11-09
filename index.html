@@ -484,7 +484,7 @@ footer {
       return r.json();
     })
     .then(data => {
-      songs = Array.isArray(data.songs) ? data.songs : [];
+      songs = Array.isArray(data) ? data : (Array.isArray(data.songs) ? data.songs : []);
 
       if (!songs.length) {
         throw new Error('Danh sách nhạc đang trống.');
