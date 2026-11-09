@@ -450,13 +450,13 @@ footer {
     }
   });
 
-  audio.addEventListener('ended', () => {
-    if (index < songs.length-1) {
-      selectSong(index+1, true);
-    } else {
-      status.textContent = 'Đã phát hết danh sách';
-    }
-  });
+  
+audio.addEventListener('ended', () => {
+  if (songs.length > 0) {
+    selectSong((index + 1) % songs.length, true);
+  }
+});
+
 
   audio.addEventListener('error', () => {
     if (audio.src) {
