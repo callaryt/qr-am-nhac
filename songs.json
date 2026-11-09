@@ -1,4 +1,5 @@
-[
+{
+"songs": [
 {
 "title": "Lầu cao một bóng",
 "artist": "Author",
@@ -25,3 +26,4 @@
 "file": "Rất lâu rồi mới khóc .mp3"
 }
 ]
+}
