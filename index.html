@@ -164,8 +164,8 @@
 
   fetch('songs.json', {cache:'no-store'})
     .then(r => { if (!r.ok) throw new Error('Không tìm thấy songs.json'); return r.json(); })
-    .then(data => {
-      songs = Array.isArray(data.songs) ? data.songs : [];
+    .then(data => { 
+      songs = Array.isArray(data) ? data : (Array.isArray(data.songs) ? data.songs : []);
       if (!songs.length) throw new Error('Danh sách đang trống. Hãy thêm bài hát vào songs.json.');
       renderList();
       selectSong(0, false);
