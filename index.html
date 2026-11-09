@@ -6,46 +6,53 @@
   <meta name="theme-color" content="#0b0b12">
   <title>Âm nhạc của tôi</title>
   <style>
-    :root { color-scheme: dark; --bg:#090910; --panel:#151521; --muted:#a5a4b5; --purple:#a78bfa; --line:#29283a; }
+    :root { color-scheme: dark; --bg:#090a0d; --panel:#17191d; --muted:#b8b8b8; --gold:#ffd400; --gold-soft:#ffe45c; --line:#39372b; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; color:#f7f5ff; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      background:radial-gradient(ellipse at 50% -15%,#38265d 0%,#171323 35%,var(--bg) 72%); }
+      background:radial-gradient(ellipse at 50% -15%,#4a4010 0%,#201e13 35%,var(--bg) 72%); }
     .wrap { width:min(720px,100%); margin:auto; padding:28px 18px 42px; }
     header { text-align:center; padding:18px 8px 22px; }
-    .eyebrow { color:var(--purple); font-size:11px; letter-spacing:.22em; font-weight:700; }
+    .eyebrow { color:var(--gold); font-size:11px; letter-spacing:.22em; font-weight:700; }
     h1 { font-size:clamp(25px,7vw,38px); margin:10px 0 7px; letter-spacing:.02em; }
     .sub { color:var(--muted); font-size:14px; margin:0; }
-    .player { background:linear-gradient(145deg,rgba(35,32,52,.96),rgba(17,17,27,.98)); border:1px solid #37324a;
+    .player { background:linear-gradient(145deg,rgba(40,36,18,.96),rgba(17,18,18,.98)); border:1px solid #65551a;
       border-radius:25px; padding:23px 20px 21px; box-shadow:0 22px 65px #0008; }
     .art { width:112px; height:112px; border-radius:50%; margin:2px auto 19px; display:grid; place-items:center;
-      background:radial-gradient(circle at 35% 30%,#d8c7ff,#8b5cf6 34%,#38235d 68%,#171321 70%);
-      box-shadow:0 0 42px #9b75ff55; }
+      background:radial-gradient(circle at 35% 30%,#fff2a6,#ffd400 38%,#8b7000 70%,#17130a 72%);
+      box-shadow:0 0 42px #ffd40055; }
     .art svg { width:43px; height:43px; fill:#fff; }
     .track-title { text-align:center; font-size:22px; font-weight:750; margin:0; overflow-wrap:anywhere; }
     .artist { text-align:center; color:var(--muted); font-size:13px; margin:6px 0 20px; }
     .visualizer { height:35px; display:flex; align-items:center; justify-content:center; gap:4px; margin:0 auto 16px; }
-    .visualizer i { width:4px; height:8px; border-radius:9px; background:var(--purple); opacity:.8; }
+    .visualizer i { width:4px; height:8px; border-radius:9px; background:var(--gold); opacity:.9; }
     .visualizer.playing i { animation:wave .75s ease-in-out infinite alternate; }
     .visualizer i:nth-child(3n) { animation-delay:-.4s; } .visualizer i:nth-child(3n+1) { animation-delay:-.2s; }
     @keyframes wave { from { transform:scaleY(.45); opacity:.45; } to { transform:scaleY(3.1); opacity:1; } }
-    .progress { width:100%; accent-color:var(--purple); cursor:pointer; }
+    .progress { width:100%; accent-color:var(--gold); cursor:pointer; }
     .times { display:flex; justify-content:space-between; color:var(--muted); font-size:11px; margin-top:3px; }
     .controls { display:flex; align-items:center; justify-content:center; gap:28px; margin:19px 0 8px; }
     button { color:inherit; border:0; cursor:pointer; }
     .plain { background:transparent; color:#d8d4e8; font-size:22px; padding:8px; }
-    .play { width: sixty; width:60px; height:60px; border-radius:50%; color:#171321; background:var(--purple); font-size:23px;
-      box-shadow:0 0 28px #a78bfa55; font-weight:800; }
+    .play { width: sixty; width:60px; height:60px; border-radius:50%; color:#17130a; background:var(--gold); font-size:23px;
+      box-shadow:0 0 28px #ffd40066; font-weight:800; }
     .status { text-align:center; color:var(--muted); font-size:11px; min-height:16px; margin-top:10px; }
     .list-title { font-size:13px; color:#d7d2e8; letter-spacing:.12em; margin:25px 4px 10px; }
     .playlist { display:grid; gap:9px; }
     .song { width:100%; display:flex; align-items:center; gap:12px; text-align:left; padding:13px 14px; border:1px solid var(--line);
       background:#11111b; border-radius:15px; }
-    .song.active { border-color:#8b6bd1; background:#211b31; }
-    .num { color:var(--purple); font-size:12px; width:20px; text-align:center; }
+    .song.active { border-color:var(--gold); background:#29240f; box-shadow:0 0 18px #ffd40018; }
+    .num { color:var(--gold); font-size:12px; width:20px; text-align:center; }
     .song-info { min-width:0; flex:1; }
     .song-name { font-weight:650; font-size:14px; overflow-wrap:anywhere; }
     .song-artist { color:var(--muted); font-size:11px; margin-top:3px; }
-    .song-icon { color:var(--purple); font-size:17px; }
+    .song-icon { color:var(--gold); font-size:17px; }
+    .lyrics { margin-top:20px; padding:16px 14px; border:1px solid #51451b; border-radius:16px;
+      background:linear-gradient(180deg,#201d12,#111216); min-height:116px; text-align:center; }
+    .lyrics-heading { color:var(--gold); font-size:11px; letter-spacing:.16em; font-weight:800; margin-bottom:12px; }
+    .lyric-line { color:#858585; font-size:15px; line-height:1.8; padding:3px 0; transition:color .2s, transform .2s, text-shadow .2s; }
+    .lyric-line.active { color:var(--gold); font-weight:800; transform:scale(1.025); text-shadow:0 0 16px #ffd40066; }
+    .lyric-word.active { color:#fff4ad; text-shadow:0 0 12px #ffd400; }
+    .lyrics-empty { color:var(--muted); font-size:12px; line-height:1.6; }
     footer { color:#777587; font-size:11px; text-align:center; margin:23px 8px 0; }
     .error { color:#ffb4b4; background:#3a1b25; padding:12px; border-radius:12px; font-size:13px; display:none; }
   </style>
@@ -75,6 +82,10 @@
       </div>
       <div class="status" id="status">Chọn một bài trong danh sách bên dưới.</div>
       <div class="error" id="error"></div>
+      <section class="lyrics" aria-live="polite">
+        <div class="lyrics-heading">LỜI BÀI HÁT</div>
+        <div id="lyricsContent" class="lyrics-empty">Lời bài hát sẽ hiện ở đây khi có dữ liệu đồng bộ.</div>
+      </section>
     </section>
 
     <h3 class="list-title">DANH SÁCH PHÁT</h3>
@@ -95,6 +106,7 @@
   const status = document.getElementById('status');
   const error = document.getElementById('error');
   const visualizer = document.getElementById('visualizer');
+  const lyricsContent = document.getElementById('lyricsContent');
   let songs = [], index = -1, seeking = false;
 
   for (let i=0; i<25; i++) visualizer.appendChild(document.createElement('i'));
@@ -103,6 +115,64 @@
     if (!Number.isFinite(n)) return '00:00';
     return `${Math.floor(n/60).toString().padStart(2,'0')}:${Math.floor(n%60).toString().padStart(2,'0')}`;
   };
+
+  function showLyricsMessage(message) {
+    lyricsContent.className = 'lyrics-empty';
+    lyricsContent.textContent = message;
+  }
+
+  function renderLyrics(song) {
+    lyricsContent.innerHTML = '';
+    const lines = Array.isArray(song.lyrics) ? song.lyrics : [];
+    if (!lines.length) {
+      showLyricsMessage('Bài này chưa có lời và mốc thời gian. Khi bổ sung dữ liệu lyrics, lời sẽ sáng vàng theo nhạc.');
+      return;
+    }
+    lyricsContent.className = '';
+    lines.forEach((line, lineIndex) => {
+      const row = document.createElement('div');
+      row.className = 'lyric-line';
+      row.dataset.lineIndex = String(lineIndex);
+      // Optional word-level timing: words: [{start, end, text}]
+      if (Array.isArray(line.words) && line.words.length) {
+        line.words.forEach((word, wordIndex) => {
+          const span = document.createElement('span');
+          span.className = 'lyric-word';
+          span.dataset.wordIndex = String(wordIndex);
+          span.textContent = (word.text || '') + (wordIndex < line.words.length - 1 ? ' ' : '');
+          row.appendChild(span);
+        });
+      } else {
+        row.textContent = line.text || '';
+      }
+      lyricsContent.appendChild(row);
+    });
+  }
+
+  function updateLyrics() {
+    if (index < 0) return;
+    const lines = Array.isArray(songs[index].lyrics) ? songs[index].lyrics : [];
+    if (!lines.length) return;
+    const t = audio.currentTime || 0;
+    let activeLine = -1;
+    lines.forEach((line, i) => {
+      const row = lyricsContent.querySelector(`[data-line-index="${i}"]`);
+      const active = t >= Number(line.start || 0) && t < Number(line.end ?? Infinity);
+      if (row) row.classList.toggle('active', active);
+      if (active) activeLine = i;
+      if (row && Array.isArray(line.words)) {
+        line.words.forEach((word, wi) => {
+          const span = row.querySelector(`[data-word-index="${wi}"]`);
+          if (span) span.classList.toggle('active',
+            t >= Number(word.start || 0) && t < Number(word.end ?? Infinity));
+        });
+      }
+    });
+    if (activeLine >= 0) {
+      const active = lyricsContent.querySelector(`[data-line-index="${activeLine}"]`);
+      if (active) active.scrollIntoView({block:'nearest', behavior:'smooth'});
+    }
+  }
 
   function renderList() {
     playlist.innerHTML = '';
@@ -125,6 +195,7 @@
     const s = songs[index];
     title.textContent = s.title || s.file;
     artist.textContent = s.artist || 'Tác giả';
+    renderLyrics(s);
     audio.src = s.file;
     audio.load();
     progress.value = 0;
@@ -153,6 +224,7 @@
   audio.addEventListener('loadedmetadata', () => { duration.textContent=time(audio.duration); status.textContent='Sẵn sàng nghe nhạc'; });
   audio.addEventListener('timeupdate', () => {
     current.textContent=time(audio.currentTime);
+    updateLyrics();
     if (!seeking && Number.isFinite(audio.duration) && audio.duration) progress.value=String(Math.round(audio.currentTime/audio.duration*1000));
   });
   audio.addEventListener('ended', () => { if (index < songs.length-1) selectSong(index+1, true); else status.textContent='Đã phát hết danh sách'; });
