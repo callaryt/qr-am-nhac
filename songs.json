@@ -20,14 +20,14 @@
 "artist": "Author",
 "file": "Đi nữa đời này .mp3"
 },
-{
-"title": "Rất lâu rồi mới khóc",
-"artist": "Author",
-"file": "Rất lâu rồi mới khóc .mp3"
-}
+    {
+      "tiêu đề": "Rất lâu rồi mới",
+      "nghệ sĩ": "Tác giả",
+      "tài liệu": "Rất lâu rồi mới .mp3"
+    },
+    {
+      "tiêu đề": "Không môn đăng hộ đối",
+      "nghệ sĩ": "Tác giả",
+      "tài liệu": "Không môn đăng hộ đối .mp3"
+    }
 ]
-},{
-  "title": "Không môn đăng hộ đối",
-  "artist": "Author",
-  "file": "Không môn đăng hộ đối.mp3"
-}
