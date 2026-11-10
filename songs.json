@@ -26,8 +26,10 @@
       "tài liệu": "Rất lâu rồi mới .mp3"
     },
     {
-      "tiêu đề": "Không môn đăng hộ đối ",
-      "nghệ sĩ": "Tác giả",
-      "tài liệu": "Không đăng ký đối số .mp3"
+      {
+  "title": "Không môn đăng hộ đối",
+  "artist": "Author",
+  "file": "Không đăng ký đối số .mp3"
+    }
     }
 ]
