@@ -1,4 +1,3 @@
-
 {
   "songs": [
     {
@@ -30,6 +29,11 @@
       "title": "Không môn đăng hộ đối",
       "artist": "Author",
       "file": "Không môn đăng hộ đối .mp3"
+    },
+    {
+      "title": "Túy hồng nhan",
+      "artist": "Author",
+      "file": "Túy hồng nhan.mp3"
     }
   ]
 }
