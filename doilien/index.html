@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080706">
+<title>Đối Liễn</title>
+<link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#090806}
+body{
+ min-height:100svh;display:grid;place-items:center;padding:22px;
+ color:#d8c18a;
+ background:
+ radial-gradient(ellipse at 50% 44%,rgba(110,83,35,.16),transparent 58%),
+ linear-gradient(145deg,#100e0a,#070706);
+}
+.art{
+ width:min(100%,760px);min-height:min(88svh,900px);
+ display:grid;place-items:center;position:relative;
+ border:1px solid rgba(216,193,138,.25);
+ outline:1px solid rgba(216,193,138,.10);outline-offset:7px;
+ padding:clamp(24px,7vw,64px);
+}
+.art:before,.art:after{
+ content:"";position:absolute;left:18px;right:18px;height:1px;
+ background:linear-gradient(90deg,transparent,rgba(216,193,138,.55),transparent)
+}
+.art:before{top:18px}.art:after{bottom:18px}
+.couplet{
+ display:flex;flex-direction:row;align-items:center;
+ justify-content:center;gap:clamp(18px,6vw,64px);width:100%;
+}
+.line{
+ display:flex;flex-direction:column;align-items:center;
+ justify-content:center;gap:clamp(5px,1.5vh,14px);
+ font-family:"Charm","Times New Roman",serif;
+ font-size:clamp(27px,6.4vw,54px);font-weight:700;line-height:1.12;
+ color:#ddc58f;
+ text-shadow:0 1px 1px #fff0c2,0 3px 10px rgba(198,158,77,.24);
+ white-space:nowrap;
+}
+.word{display:block}
+@media(max-height:620px){
+ .art{min-height:94svh;padding:18px}
+ .line{font-size:clamp(22px,5vw,38px);gap:4px}
+}
+@media(min-width:700px){
+ .line{font-size:clamp(42px,5.5vw,62px)}
+}
+</style>
+</head>
+<body>
+<main class="art" aria-label="Đối liễn thư pháp">
+<section class="couplet">
+<div class="line">
+<span class="word">Nhân</span>
+<span class="word">sinh</span>
+<span class="word">nào</span>
+<span class="word">được</span>
+<span class="word">mấy</span>
+<span class="word">như</span>
+<span class="word">ý</span>
+</div>
+<div class="line">
+<span class="word">Vạn</span>
+<span class="word">sự</span>
+<span class="word">chỉ</span>
+<span class="word">cần</span>
+<span class="word">nữa</span>
+<span class="word">tâm</span>
+<span class="word">an</span>
+</div>
+</section>
+</main>
+</body>
+</html>
