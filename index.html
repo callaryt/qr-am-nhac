@@ -91,7 +91,7 @@ h1 {
   white-space:nowrap;
   text-shadow:0 0 8px #ff2020;
 }
-}
+
 
 .track-title {
   text-align:center;
@@ -340,6 +340,7 @@ footer {
   let songs = [];
   let index = -1;
   let seeking = false;
+  let seeking = false;
 
   for (let i=0; i<25; i++) {
     visualizer.appendChild(document.createElement('i'));
@@ -452,7 +453,7 @@ footer {
 
   
 audio.addEventListener('ended', () => {
-  if (songs.length > 0) {
+  if (songs.length > 0 && !singleSongMode) {
     selectSong((index + 1) % songs.length, true);
   }
 });
@@ -481,26 +482,47 @@ audio.addEventListener('ended', () => {
   });
 
   fetch('songs.json', {cache:'no-store'})
-    .then(r => {
-      if (!r.ok) throw new Error('Không tìm thấy songs.json');
-      return r.json();
-    })
-    .then(data => {
-      songs = Array.isArray(data) ? data : (Array.isArray(data.songs) ? data.songs : []);
+  .then(r => {
+    if (!r.ok) throw new Error('Không tìm thấy songs.json');
+    return r.json();
+  })
+  .then(data => {
+    songs = Array.isArray(data) ? data :
+      (Array.isArray(data.songs) ? data.songs : []);
 
-      if (!songs.length) {
-        throw new Error('Danh sách nhạc đang trống.');
+    if (!songs.length) {
+      throw new Error('Danh sách nhạc đang trống.');
+    }
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.has('song')) {
+      const songNumber = Number(params.get('song'));
+
+      if (!Number.isInteger(songNumber) ||
+          songNumber < 1 || songNumber > songs.length) {
+        throw new Error('Mã bài hát không hợp lệ.');
       }
 
+      singleSongMode = true;
+      playlist.style.display = 'none';
+      document.querySelector('.list-title').style.display = 'none';
+      document.getElementById('prev').style.display = 'none';
+      document.getElementById('next').style.display = 'none';
+
+      selectSong(songNumber - 1, false);
+      status.textContent = 'Mã QR riêng - Nhấn Play để nghe.';
+    } else {
       renderList();
       selectSong(0, false);
       status.textContent = 'Chọn bài hát rồi nhấn Play để nghe.';
-    })
-    .catch(e => {
-      error.textContent = e.message;
-      error.style.display = 'block';
-      status.textContent = 'Chưa tải được danh sách nhạc';
-    });
+    }
+  })
+  .catch(e => {
+    error.textContent = e.message;
+    error.style.display = 'block';
+    status.textContent = 'Chưa tải được danh sách nhạc';
+  });
 
 })();
 </script>
