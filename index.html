@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -17,7 +16,9 @@
   --line:#66551b;
 }
 
-* { box-sizing:border-box; }
+* {
+  box-sizing:border-box;
+}
 
 body {
   margin:0;
@@ -25,7 +26,12 @@ body {
   color:var(--white);
   font-family:Arial,system-ui,sans-serif;
   background:
-    radial-gradient(ellipse at 50% 35%,#302900 0%,#151308 40%,#080808 78%);
+    radial-gradient(
+      ellipse at 50% 35%,
+      #302900 0%,
+      #151308 40%,
+      #080808 78%
+    );
 }
 
 .wrap {
@@ -74,9 +80,14 @@ h1 {
   display:grid;
   place-items:center;
   background:
-    radial-gradient(circle at 35% 28%,
-    #fff9a5 0%,#ffe94a 20%,#ffd000 48%,
-    #bd8d00 78%,#594000 100%);
+    radial-gradient(
+      circle at 35% 28%,
+      #fff9a5 0%,
+      #ffe94a 20%,
+      #ffd000 48%,
+      #bd8d00 78%,
+      #594000 100%
+    );
   box-shadow:
     0 0 28px #ffd40088,
     0 0 65px #ffd40033,
@@ -85,12 +96,11 @@ h1 {
 
 .be-logo {
   color:#ff2020;
-  font-size:clamp(14px, 4vw, 19px);
+  font-size:clamp(14px,4vw,19px);
   font-weight:900;
   letter-spacing:-0.5px;
   white-space:nowrap;
   text-shadow:0 0 8px #ff2020;
-}
 }
 
 .track-title {
@@ -137,8 +147,13 @@ h1 {
 }
 
 @keyframes wave {
-  from { transform:scaleY(.5); }
-  to { transform:scaleY(3); }
+  from {
+    transform:scaleY(.5);
+  }
+
+  to {
+    transform:scaleY(3);
+  }
 }
 
 .progress {
@@ -276,6 +291,7 @@ footer {
 </head>
 
 <body>
+
 <main class="wrap">
 
 <header>
@@ -290,15 +306,26 @@ footer {
     <span class="be-logo">GIAI ĐIỆU CÀ KHỊA</span>
   </div>
 
-  <h2 class="track-title" id="title">Chưa chọn bài hát</h2>
-  <p class="artist" id="artist">Tác giả</p>
+  <h2 class="track-title" id="title">
+    Chưa chọn bài hát
+  </h2>
+
+  <p class="artist" id="artist">
+    Tác giả
+  </p>
 
   <div class="visualizer" id="visualizer"></div>
 
   <audio id="audio" preload="metadata"></audio>
 
-  <input class="progress" id="progress"
-    type="range" min="0" max="1000" value="0">
+  <input
+    class="progress"
+    id="progress"
+    type="range"
+    min="0"
+    max="1000"
+    value="0"
+  >
 
   <div class="times">
     <span id="current">00:00</span>
@@ -307,24 +334,33 @@ footer {
 
   <div class="controls">
     <button class="plain" id="prev">|◀</button>
+
     <button class="play" id="toggle">▶</button>
+
     <button class="plain" id="next">▶|</button>
   </div>
 
-  <div class="status" id="status">Sẵn sàng nghe nhạc</div>
+  <div class="status" id="status">
+    Sẵn sàng nghe nhạc
+  </div>
+
   <div class="error" id="error"></div>
 
 </section>
 
 <h3 class="list-title">DANH SÁCH PHÁT</h3>
+
 <section class="playlist" id="playlist"></section>
 
-<footer>Được chia sẻ bằng mã QR cá nhân</footer>
+<footer>
+  Được chia sẻ bằng mã QR cá nhân
+</footer>
 
 </main>
 
 <script>
 (() => {
+
   const audio = document.getElementById('audio');
   const title = document.getElementById('title');
   const artist = document.getElementById('artist');
@@ -341,166 +377,325 @@ footer {
   let index = -1;
   let seeking = false;
 
-  for (let i=0; i<25; i++) {
+  // Tạo thanh nhạc
+  for (let i = 0; i < 25; i++) {
     visualizer.appendChild(document.createElement('i'));
   }
 
+  // Đổi giây thành phút:giây
   const time = n => {
     if (!Number.isFinite(n)) return '00:00';
-    return `${Math.floor(n/60).toString().padStart(2,'0')}:${Math.floor(n%60).toString().padStart(2,'0')}`;
+
+    return `${Math.floor(n / 60)
+      .toString()
+      .padStart(2, '0')}:${Math.floor(n % 60)
+      .toString()
+      .padStart(2, '0')}`;
   };
 
+  // Hiển thị danh sách bài hát
   function renderList() {
+
     playlist.innerHTML = '';
 
     songs.forEach((song, i) => {
+
       const b = document.createElement('button');
-      b.className = 'song' + (i === index ? ' active' : '');
+
+      b.className =
+        'song' + (i === index ? ' active' : '');
 
       b.innerHTML = `
-        <span class="num">${String(i+1).padStart(2,'0')}</span>
-        <span class="song-info">
-          <span class="song-name"></span>
-          <span class="song-artist"></span>
+        <span class="num">
+          ${String(i + 1).padStart(2, '0')}
         </span>
-        <span class="song-icon">${i === index && !audio.paused ? '♫' : '♪'}</span>
+
+        <span class="song-info">
+
+          <span class="song-name"></span>
+
+          <span class="song-artist"></span>
+
+        </span>
+
+        <span class="song-icon">
+          ${i === index && !audio.paused ? '♫' : '♪'}
+        </span>
       `;
 
-      b.querySelector('.song-name').textContent = song.title || song.file;
-      b.querySelector('.song-artist').textContent = song.artist || 'Tác giả';
+      b.querySelector('.song-name').textContent =
+        song.title || song.file;
 
-      b.addEventListener('click', () => selectSong(i, true));
+      b.querySelector('.song-artist').textContent =
+        song.artist || 'Tác giả';
+
+      b.addEventListener('click', () => {
+        selectSong(i, true);
+      });
+
       playlist.appendChild(b);
     });
   }
 
+  // Chọn bài hát
   function selectSong(i, autoplay) {
+
     if (!songs.length) return;
 
     index = (i + songs.length) % songs.length;
+
     const s = songs[index];
 
-    title.textContent = s.title || s.file;
-    artist.textContent = s.artist || 'Tác giả';
+    title.textContent =
+      s.title || s.file;
+
+    artist.textContent =
+      s.artist || 'Tác giả';
 
     audio.src = s.file;
+
     audio.load();
 
     progress.value = 0;
+
     current.textContent = '00:00';
+
     duration.textContent = '00:00';
 
     error.style.display = 'none';
-    status.textContent = 'Đang tải bản nhạc…';
+
+    status.textContent =
+      'Đang tải bản nhạc…';
 
     renderList();
 
     if (autoplay) {
+
       audio.play().catch(() => {
-        status.textContent = 'Hãy nhấn nút Play để bắt đầu nghe.';
+
+        status.textContent =
+          'Hãy nhấn nút Play để bắt đầu nghe.';
+
         toggle.textContent = '▶';
       });
     }
   }
 
+  // Nút Play / Pause
   toggle.addEventListener('click', () => {
-    if (index < 0 && songs.length) selectSong(0, false);
+
+    if (index < 0 && songs.length) {
+      selectSong(0, false);
+    }
+
     if (index < 0) return;
 
     if (audio.paused) {
+
       audio.play().catch(() => {
-        status.textContent = 'Không phát được. Hãy kiểm tra file nhạc.';
+
+        status.textContent =
+          'Không phát được. Hãy kiểm tra file nhạc.';
       });
+
     } else {
+
       audio.pause();
     }
   });
 
-  document.getElementById('prev').addEventListener('click', () => {
-    if (songs.length) selectSong(index <= 0 ? songs.length-1 : index-1, true);
-  });
+  // Bài trước
+  document.getElementById('prev')
+    .addEventListener('click', () => {
 
-  document.getElementById('next').addEventListener('click', () => {
-    if (songs.length) selectSong(index+1, true);
-  });
+      if (songs.length) {
 
+        selectSong(
+          index <= 0
+            ? songs.length - 1
+            : index - 1,
+          true
+        );
+      }
+    });
+
+  // Bài tiếp theo
+  document.getElementById('next')
+    .addEventListener('click', () => {
+
+      if (songs.length) {
+
+        selectSong(index + 1, true);
+      }
+    });
+
+  // Khi bắt đầu phát
   audio.addEventListener('play', () => {
+
     toggle.textContent = 'Ⅱ';
-    status.textContent = 'Đang phát';
+
+    status.textContent =
+      'Đang phát';
+
     visualizer.classList.add('playing');
+
     renderList();
   });
 
+  // Khi tạm dừng
   audio.addEventListener('pause', () => {
+
     toggle.textContent = '▶';
+
     visualizer.classList.remove('playing');
+
     renderList();
   });
 
+  // Khi tải được thời lượng
   audio.addEventListener('loadedmetadata', () => {
-    duration.textContent = time(audio.duration);
-    status.textContent = 'Sẵn sàng nghe nhạc';
+
+    duration.textContent =
+      time(audio.duration);
+
+    status.textContent =
+      'Sẵn sàng nghe nhạc';
   });
 
+  // Cập nhật thời gian
   audio.addEventListener('timeupdate', () => {
-    current.textContent = time(audio.currentTime);
 
-    if (!seeking && Number.isFinite(audio.duration) && audio.duration) {
-      progress.value = String(Math.round(audio.currentTime/audio.duration*1000));
+    current.textContent =
+      time(audio.currentTime);
+
+    if (
+      !seeking &&
+      Number.isFinite(audio.duration) &&
+      audio.duration
+    ) {
+
+      progress.value =
+        String(
+          Math.round(
+            audio.currentTime /
+            audio.duration *
+            1000
+          )
+        );
     }
   });
 
-  
-audio.addEventListener('ended', () => {
-  if (songs.length > 0) {
-    selectSong((index + 1) % songs.length, true);
-  }
-});
+  // Hết bài -> chuyển bài tiếp theo
+  audio.addEventListener('ended', () => {
 
+    if (songs.length > 0) {
 
+      selectSong(
+        (index + 1) % songs.length,
+        true
+      );
+    }
+  });
+
+  // Báo lỗi file nhạc
   audio.addEventListener('error', () => {
+
     if (audio.src) {
-      error.textContent = 'Không tải được file nhạc. Hãy kiểm tra tên file trong songs.json và file MP3.';
+
+      error.textContent =
+        'Không tải được file nhạc. Hãy kiểm tra tên file trong songs.json và file MP3.';
+
       error.style.display = 'block';
-      status.textContent = 'Có lỗi khi tải nhạc';
+
+      status.textContent =
+        'Có lỗi khi tải nhạc';
     }
   });
 
+  // Kéo thanh tiến trình
   progress.addEventListener('input', () => {
+
     seeking = true;
+
     if (audio.duration) {
-      current.textContent = time(Number(progress.value)/1000*audio.duration);
+
+      current.textContent =
+        time(
+          Number(progress.value) /
+          1000 *
+          audio.duration
+        );
     }
   });
 
+  // Thả thanh tiến trình
   progress.addEventListener('change', () => {
+
     if (audio.duration) {
-      audio.currentTime = Number(progress.value)/1000*audio.duration;
+
+      audio.currentTime =
+        Number(progress.value) /
+        1000 *
+        audio.duration;
     }
+
     seeking = false;
   });
 
-  fetch('songs.json', {cache:'no-store'})
-    .then(r => {
-      if (!r.ok) throw new Error('Không tìm thấy songs.json');
-      return r.json();
-    })
-    .then(data => {
-      songs = Array.isArray(data) ? data : (Array.isArray(data.songs) ? data.songs : []);
+  // Đọc songs.json
+  fetch('songs.json', {
+    cache: 'no-store'
+  })
 
-      if (!songs.length) {
-        throw new Error('Danh sách nhạc đang trống.');
-      }
+  .then(r => {
 
-      renderList();
-      selectSong(0, false);
-      status.textContent = 'Chọn bài hát rồi nhấn Play để nghe.';
-    })
-    .catch(e => {
-      error.textContent = e.message;
-      error.style.display = 'block';
-      status.textContent = 'Chưa tải được danh sách nhạc';
-    });
+    if (!r.ok) {
+
+      throw new Error(
+        'Không tìm thấy songs.json'
+      );
+    }
+
+    return r.json();
+  })
+
+  .then(data => {
+
+    songs =
+      Array.isArray(data)
+        ? data
+        : (
+            Array.isArray(data.songs)
+              ? data.songs
+              : []
+          );
+
+    if (!songs.length) {
+
+      throw new Error(
+        'Danh sách nhạc đang trống.'
+      );
+    }
+
+    renderList();
+
+    selectSong(0, false);
+
+    status.textContent =
+      'Chọn bài hát rồi nhấn Play để nghe.';
+  })
+
+  .catch(e => {
+
+    error.textContent =
+      e.message;
+
+    error.style.display =
+      'block';
+
+    status.textContent =
+      'Chưa tải được danh sách nhạc';
+  });
 
 })();
 </script>
