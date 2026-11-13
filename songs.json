@@ -1,41 +1,39 @@
-
 {
-"songs": [
-{
-"title": "Lầu cao một bóng",
-"artist": "Author",
-"file": "Lầu cao một bóng .mp3"
-},
-{
-"title": "Mỹ vị cuộc đời",
-"artist": "Author",
-"file": "Mỹ vị cuộc đời.mp3"
-},
-{
-"title": "Nghèo thì ai thương",
-"artist": "Author",
-"file": "Nghèo thì ai thương .mp3"
-},
-{
-"title": "Đi nữa đời này",
-"artist": "Author",
-"file": "Đi nữa đời này .mp3"
-},
-{
-"title": "Rất lâu rồi mới khóc",
-"artist": "Tác giả",
-"file": "Rất lâu rồi mới khóc .mp3"
-},
-{
-"title": "Không môn đăng hộ đối",
-"artist": "Author",
-"file": "Không môn đăng hộ đối .mp3"
-},
- {
-  "title": "Túy hồng nhan",
-"artist": "Author",
-"file": "Túy hồng nhan.mp3"
+  "songs": [
+    {
+      "title": "Lầu cao một bóng",
+      "artist": "Author",
+      "file": "Lầu cao một bóng .mp3"
+    },
+    {
+      "title": "Mỹ vị cuộc đời",
+      "artist": "Author",
+      "file": "Mỹ vị cuộc đời.mp3"
+    },
+    {
+      "title": "Nghèo thì ai thương",
+      "artist": "Author",
+      "file": "Nghèo thì ai thương .mp3"
+    },
+    {
+      "title": "Đi nữa đời này",
+      "artist": "Author",
+      "file": "Đi nữa đời này .mp3"
+    },
+    {
+      "title": "Rất lâu rồi mới khóc",
+      "artist": "Tác giả",
+      "file": "Rất lâu rồi mới khóc .mp3"
+    },
+    {
+      "title": "Không môn đăng hộ đối",
+      "artist": "Author",
+      "file": "Không môn đăng hộ đối .mp3"
+    },
+    {
+      "title": "Túy hồng nhan",
+      "artist": "Author",
+      "file": "Túy hồng nhan.mp3"
+    }
+  ]
 }
-]
-
-
