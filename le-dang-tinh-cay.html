@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08090d">
+<title>Lệ Đắng Tình Cay (Remix)</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 35%, #343044, #11121b 55%, #050609);
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 18px;
+}
+
+.album {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at 70% 25%, #927c80 0%, transparent 25%),
+    radial-gradient(ellipse at 30% 80%, #59465c, transparent 45%),
+    linear-gradient(145deg, #272c3b, #090a12 70%);
+  box-shadow: 0 20px 55px #000a;
+}
+
+.cover:before {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border: 1px solid #ffffff30;
+  border-radius: 50%;
+  box-shadow: 0 0 45px #c7a2a340;
+}
+
+.art {
+  position: relative;
+  z-index: 1;
+  font-size: 70px;
+  color: #d6b7a2;
+  text-shadow: 0 0 35px #d6b7a280;
+}
+
+.cover-text {
+  position: absolute;
+  bottom: 27px;
+  left: 10px;
+  right: 10px;
+  z-index: 2;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px black;
+}
+
+.small {
+  color: #c4a88c;
+  letter-spacing: 4px;
+  font-size: 11px;
+  margin-top: 35px;
+}
+
+h1 {
+  font-size: 25px;
+  margin: 12px 0 7px;
+  letter-spacing: 1px;
+}
+
+.artist {
+  color: #aaa;
+  font-size: 14px;
+}
+
+audio {
+  width: 100%;
+  margin-top: 30px;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.note {
+  color: #777;
+  font-size: 12px;
+  margin-top: 28px;
+}
+</style>
+</head>
+
+<body>
+<div class="album">
+
+  <div class="cover">
+    <div class="art">♫</div>
+    <div class="cover-text">LỆ ĐẮNG TÌNH CAY</div>
+  </div>
+
+  <div class="small">MUSIC • REMIX</div>
+
+  <h1>Lệ Đắng Tình Cay (Remix)</h1>
+  <div class="artist">Tác giả</div>
+
+  <audio controls preload="metadata">
+    <source src="./Lệ Đắng Tình Cay(remix).mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ phát nhạc.
+  </audio>
+
+  <div class="note">
+    Một giai điệu – Một cảm xúc
+  </div>
+
+</div>
+</body>
+</html>
