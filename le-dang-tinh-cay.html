@@ -80,8 +80,9 @@ h1{
  margin-bottom:27px;
 }
 
+
 .visualizer{
- height:38px;
+ height:45px;
  display:flex;
  justify-content:center;
  align-items:center;
@@ -93,8 +94,83 @@ h1{
  width:4px;
  height:var(--h);
  border-radius:5px;
- background:linear-gradient(#f6b7ff,#7667ff);
- opacity:.85;
+ background:linear-gradient(
+   to top,
+   #7865ff,
+   #d46bff,
+   #70dfff
+ );
+ box-shadow:0 0 8px #b66cff;
+ transform:scaleY(0.35);
+ transform-origin:center;
+ animation:neonWave 0.65s ease-in-out infinite alternate;
+ animation-play-state:paused;
+}
+
+.visualizer.playing span{
+ animation-play-state:running;
+}
+
+.visualizer span:nth-child(2n){
+ animation-duration:0.45s;
+}
+.visualizer span:nth-child(3n){
+ animation-duration:0.8s;
+}
+.visualizer span:nth-child(4n){
+ animation-duration:0.55s;
+}
+
+@keyframes neonWave{
+ from{transform:scaleY(0.25)}
+ to{transform:scaleY(1.15)}
+}
+
+.visualizer{
+ height:45px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:4px;
+ margin-bottom:20px;
+}
+
+.visualizer span{
+ width:4px;
+ height:var(--h);
+ border-radius:5px;
+ background:linear-gradient(
+   to top,
+   #7865ff,
+   #d46bff,
+   #70dfff
+ );
+ box-shadow:0 0 8px #b66cff;
+ transform:scaleY(0.35);
+ transform-origin:center;
+ animation:neonWave 0.65s ease-in-out infinite alternate;
+ animation-play-state:paused;
+}
+
+.visualizer.playing span{
+ animation-play-state:running;
+}
+
+.visualizer span:nth-child(2n){
+ animation-duration:0.45s;
+}
+.visualizer span:nth-child(3n){
+ animation-duration:0.8s;
+}
+.visualizer span:nth-child(4n){
+ animation-duration:0.55s;
+}
+
+@keyframes neonWave{
+ from{transform:scaleY(0.25)}
+ to{transform:scaleY(1.15)}
+}
+
 }
 
 .progress{
@@ -250,10 +326,14 @@ play.onclick=()=>{
 
 audio.onplay=()=>{
  play.textContent="Ⅱ";
+ document.getElementById("visualizer")
+ .classList.add("playing");
 };
 
 audio.onpause=()=>{
  play.textContent="▶";
+ document.getElementById("visualizer")
+ .classList.remove("playing");
 };
 
 audio.onended=()=>{
